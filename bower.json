@@ -1,0 +1,26 @@
+{
+  "name": "requirejs",
+  "version": "0.0.0",
+  "authors": [
+    "Andrew <luzkovskyandrey@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.12.2",
+    "requirejs": "~2.1.15",
+    "jsx-requirejs-plugin": "~0.5.1",
+    "require-css": "~0.1.8",
+    "requirejs-text": "~2.0.12",
+    "react-draggable": "~0.3.0",
+    "react-bootstrap": "~0.13.3",
+    "reflux": "~0.2.4",
+    "react-router": "~0.11.6"
+  }
+}
