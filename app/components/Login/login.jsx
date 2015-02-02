@@ -1,6 +1,7 @@
 define(function(require) {    
 	var React = require('react');
 
+
     var { Row, Col, Grid, Input, TabbedArea, TabPane } = require('react-bootstrap');
     var { LinkedStateRadioGroupMixin } = require('mixins');
 
@@ -8,7 +9,7 @@ define(function(require) {
 
 
     var actions = require('jsx!actions');
-    
+   
 
     var RegistForm = React.createClass({
         mixins : [
@@ -51,8 +52,8 @@ define(function(require) {
         ],
         getInitialState: function() {
             return {
-                email : '',
-                password : ''
+                email : 'joe@example.com',
+                password : 'password1'
             };
         },
         login : function(e){
@@ -73,7 +74,7 @@ define(function(require) {
             return <Grid>
                 <Row>
                     <Col xsOffset={4} xs={4} className="login-form-container">
-                        <TabbedArea  defaultActiveKey={2}>
+                        <TabbedArea  defaultActiveKey={1}>
                             <TabPane className="login-form" eventKey={1} tab="Login">
                                 <LoginForm/>
                              </TabPane>

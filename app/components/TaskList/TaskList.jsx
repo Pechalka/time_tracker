@@ -7,6 +7,8 @@ define(function(require) {
 	var Reflux = require('reflux');
 	var stores = require('stores');
 
+
+
     return  React.createClass({
     	mixins: [ 
 	    	State, 

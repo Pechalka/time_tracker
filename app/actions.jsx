@@ -5,6 +5,7 @@ define(function(require) {
     var actions =  Reflux.createActions([
         'registrUser',
         'login',
+        'logout',
 
         'updateStatus',
         'removeTask',
@@ -20,13 +21,21 @@ define(function(require) {
         'addComment'
     ])  
 
+     var { auth } = require('jsx!auth');
 
     actions.registrUser.listen(function(data){
-        location.hash = '/projects';
+        actions.login(data)
     })
     
+    actions.logout.listen(function(){
+        auth.logout();
+        location.hash = '/login'; 
+    })
+
     actions.login.listen(function(data){
-        location.hash = '/projects';
+        auth.login(data.email, data.password, (authenticated)=>{
+            if (authenticated) location.hash = '/projects';     
+        })
     })
     
 

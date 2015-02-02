@@ -3,6 +3,7 @@ define(function(require) {
 
 	var Router = require('react-router');
 	var stores = require('stores');
+	var actions = require('jsx!actions');
 	
 	var { Route, DefaultRoute, RouteHandler, Link } = Router;
 	var { Nav, Navbar, NavItem, Link, Grid } = require('react-bootstrap');
@@ -11,11 +12,18 @@ define(function(require) {
 		return Object.prototype.toString.call( obj ) === '[object Array]';
 	}
 
+	var { Authentication } = require('jsx!auth');
+
+	
 	var NavMenu = React.createClass({
-		mixins: [ Router.State, Reflux.connect(stores.projectName, "projectName") ],
+		mixins: [  Router.State, Reflux.connect(stores.projectName, "projectName") ],
 		getInitialState: function() {
 			return {
 			};
+		},
+		logout : function(e){
+			e.preventDefault()
+			actions.logout();
 		},
 		render : function(){
 			
@@ -59,13 +67,14 @@ define(function(require) {
 		        {items}
 		      </Nav>
 		      <Nav right>
-		        <NavItem eventKey={0} href="#/login">Log out</NavItem>
+		        <NavItem eventKey={0} onClick={this.logout}>Log out</NavItem>
 		      </Nav>
 		    </Navbar>
 		}
 	})
 	
     return  React.createClass({
+    	mixins : [Authentication],
 		render: function() {
 			
 			return (

@@ -11,7 +11,27 @@ define(function(require) {
     var NewTask = require('jsx!components/NewTask/NewTask');
     var EditTask = require('jsx!components/EditTask/EditTask');
     
+
+    var { auth } = require('jsx!auth');
+
+
 	var App = React.createClass({
+		getInitialState: function () {
+		    return {
+		      loggedIn: auth.loggedIn()
+		    };
+		},
+
+		setStateOnAuth: function (loggedIn) {
+		    this.setState({
+		      loggedIn: loggedIn
+		    });
+		},
+
+		componentWillMount: function () {
+		    auth.onChange = this.setStateOnAuth;
+		    auth.login();
+		},
 		render: function() {
 			return (
 				<RouteHandler/>
@@ -22,7 +42,7 @@ define(function(require) {
     var routes = (
 			  <Route handler={App} path="/">
 			    <DefaultRoute handler={Login}/>
-			    <Route name="login"  handler={Login}/>
+			    <Route name="/login"  handler={Login}/>
 			    <Route  handler={Layout}>
 				    <Route name="projects" path="/projects"   handler={ProjectList}/>
 				    <Route name="issues" path="/projects/:projectName"   handler={TaskList}/>

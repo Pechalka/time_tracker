@@ -54,8 +54,9 @@ define(function(require) {
 		}
 	})
 
+
     return  React.createClass({
-    	mixins: [ State, Reflux.connect(stores.task) ],
+    	mixins: [  State, Reflux.connect(stores.task) ],
     	componentDidMount: function() {
     		actions.showTask(this.getParams())
     	},

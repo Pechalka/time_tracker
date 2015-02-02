@@ -33,9 +33,8 @@ define(function(require) {
     		})
     	},
     	selectProject : function(p, e){
+            e.preventDefault()  
             actions.selectProject(p);
-
-            return false;
         },
 		render: function() {
             //debugger
