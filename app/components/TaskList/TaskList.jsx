@@ -38,7 +38,7 @@ define(function(require) {
     		})
 
     		var rows = this.state.tasks.map((t, index) => {
-					return <tr>
+					return <tr key={t.id}>
 			          <td>{index+1}</td>
 			          <td><a href={"#/projects/" + this.state.projectName + "/" + t.id}>{t.title}</a></td>
 			          <td>
@@ -83,7 +83,7 @@ define(function(require) {
     	},
     	mangerView : function(){
 			var rows = this.state.tasks.map((t, index) => {
-					return <tr>
+					return <tr key={t.id}>
 			          <td>{index+1}</td>
 			          <td><a href={"#/projects/" + this.state.projectName + "/" + t.id}>{t.title}</a></td>
 			          <td>{t.status}</td>

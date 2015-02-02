@@ -4,7 +4,7 @@ define(function(require) {
 	var Router = require('react-router');
 	var stores = require('stores');
 	var actions = require('jsx!actions');
-	
+
 	var { Route, DefaultRoute, RouteHandler, Link } = Router;
 	var { Nav, Navbar, NavItem, Link, Grid } = require('react-bootstrap');
 	 var Reflux = require('reflux');
@@ -59,7 +59,7 @@ define(function(require) {
 					isActive = this.isActive(item.to, this.props.params, this.props.query);
 				}
 				
-				return <NavItem active={isActive} eventKey={index} href={item.href}>{item.title}{isActive}</NavItem>
+				return <NavItem key={index} active={isActive} eventKey={index} href={item.href}>{item.title}{isActive}</NavItem>
 			}.bind(this))
 
 			return  <Navbar style={style} inverse>

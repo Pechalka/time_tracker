@@ -13,7 +13,7 @@ define(function (require) {
     //TODO : fix api
     var LocalStorage = (function () {
         function Class(key, idPropName, isSetId) {
-            this.key = 'nozo_' +
+            this.key = 'time_tracker_' +
                 '_' + key +
                 '_' + (new Date()).getDate();
             this.idPropName = idPropName || 'id';
