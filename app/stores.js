@@ -4,6 +4,10 @@ define(function (require) {
 
     return {
     	projects : require('jsx!stores/Projects'),
-    	tasks : require('jsx!stores/Tasks')
+    	tasks : require('jsx!stores/Tasks'),
+    	task : require('jsx!stores/Task'),
+    	comments : require('jsx!stores/Comments'),
+    	
+    	projectName : require('jsx!stores/ProjectName')
     }
 })

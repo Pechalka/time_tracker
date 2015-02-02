@@ -8,7 +8,11 @@ define(function(require) {
 	var stores = require('stores');
 
     return  React.createClass({
-    	mixins: [ State, Reflux.connect(stores.tasks, "tasks") ],
+    	mixins: [ 
+	    	State, 
+	    	Reflux.connect(stores.tasks, "tasks"), 
+	    	Reflux.connect(stores.projectName, "projectName") 
+    	],
 
     	getInitialState: function() {
     		return {
@@ -34,7 +38,7 @@ define(function(require) {
     		var rows = this.state.tasks.map((t, index) => {
 					return <tr>
 			          <td>{index+1}</td>
-			          <td><a href={"#/projects/test/" + t.id}>{t.title}</a></td>
+			          <td><a href={"#/projects/" + this.state.projectName + "/" + t.id}>{t.title}</a></td>
 			          <td>
 			          		<Input onChange={this.updateStatus.bind(this, t)} type="select" value={t.status} >{options}</Input>
 			          </td>
@@ -68,6 +72,9 @@ define(function(require) {
     	},
     	componentDidMount: function() {
     		actions.showTasks(this.getParams());
+    		this.setState({
+    			projectName : this.getParams().projectName
+    		})
     	},
     	componentWillReceiveProps: function(nextProps) {
     		actions.showTasks(this.getParams());
@@ -76,7 +83,7 @@ define(function(require) {
 			var rows = this.state.tasks.map((t, index) => {
 					return <tr>
 			          <td>{index+1}</td>
-			          <td><a href={"#/projects/test/" + t.id}>{t.title}</a></td>
+			          <td><a href={"#/projects/" + this.state.projectName + "/" + t.id}>{t.title}</a></td>
 			          <td>{t.status}</td>
 			          <td>{t.category}</td>
 			          <td>{t.updated}</td>

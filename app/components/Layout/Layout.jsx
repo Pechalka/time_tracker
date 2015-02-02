@@ -2,18 +2,19 @@ define(function(require) {
 	var React = require('react');
 
 	var Router = require('react-router');
+	var stores = require('stores');
+	
 	var { Route, DefaultRoute, RouteHandler, Link } = Router;
 	var { Nav, Navbar, NavItem, Link, Grid } = require('react-bootstrap');
-	
+	 var Reflux = require('reflux');
 	var isArray = function(obj){
 		return Object.prototype.toString.call( obj ) === '[object Array]';
 	}
 
 	var NavMenu = React.createClass({
-		mixins: [ Router.State ],
+		mixins: [ Router.State, Reflux.connect(stores.projectName, "projectName") ],
 		getInitialState: function() {
 			return {
-				projectName : "test" 
 			};
 		},
 		render : function(){
@@ -21,24 +22,24 @@ define(function(require) {
 			var style = {
 				borderRadius : '0'
 			}
-
-			var items = [
+			var menu = [
 				{
 					href : "#/projects", 
 					title : "Projects", 
 					to : "projects"
 				},
 				{
-					href : "#/projects/" + this.state.projectName , 
+					href : this.state.projectName ? "#/projects/" + this.state.projectName : '#/projects', 
 					title : "Issues", 
 					to : ["issues", "issues_edit"]
 				},
 				{
-					href : "#/projects/" + this.state.projectName + "/new", 
+					href : this.state.projectName ? "#/projects/" + this.state.projectName + "/new" : '#/projects', 
 					title : "New issues", 
 					to :  "issues_new"	
 				}
-			].map(function(item, index) {
+			]
+			var items = menu.map(function(item, index) {
 				var isActive = false;
 
 				if (isArray(item.to)){

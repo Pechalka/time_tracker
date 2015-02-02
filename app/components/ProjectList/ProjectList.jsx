@@ -9,7 +9,8 @@ define(function(require) {
     return  React.createClass({
     	mixins : [
             React.addons.LinkedStateMixin,
-            Reflux.connect(stores.projects, "projects")
+            Reflux.connect(stores.projects, "projects"),
+            Reflux.connect(stores.projectName, "projectName")
         ],
         getInitialState: function() {
     		return {
@@ -21,6 +22,7 @@ define(function(require) {
         },
     	removeProject : function(project, e){
     		e.preventDefault()
+            e.stopPropagation();
     		actions.removeProject(project)
     	},
     	addProject : function(e){
@@ -31,16 +33,15 @@ define(function(require) {
     		})
     	},
     	selectProject : function(p, e){
-            //href={"#/projects/" + p.name} 
+            actions.selectProject(p);
 
-            window.location.hash = '/projects/' + p.name;
             return false;
         },
 		render: function() {
             //debugger
 			var projects = this.state.projects.map((p, index) => {
 					var css = "list-group-item  clearfix"
-					if (index == 1){
+					if (p.name == this.state.projectName){
 						css += " active";
 					}
 					return <a onClick={this.selectProject.bind(this, p)} className={css}>
