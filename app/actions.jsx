@@ -9,9 +9,11 @@ define(function(require) {
         'updateStatus',
         'removeTask',
         'createTask',
+        'showTasks',
 
         'removeProject',
-        'addProject'
+        'addProject',
+        'showProjects'
     ])  
 
     var log = function(key){
@@ -47,8 +49,39 @@ define(function(require) {
     })
 
     actions.addProject.listen(function(data){
-        console.log("removeProject ", data );
+        console.log("addProject ", data );
     })
+
+
+    var LocalStore = function(url){
+        var self = this;
+        
+        self.collection = [];
+
+        
+
+        self.create = function(data){
+
+        }
+
+        self.fetchAll = function(){
+
+        }
+
+        self.fetchOne = function(id){
+
+        }
+
+        self.removeById = function(id){
+
+        }
+
+        self.updateById = function(id, data){
+
+        }
+
+
+    }
 
 
     return actions;

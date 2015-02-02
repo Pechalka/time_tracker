@@ -13,7 +13,9 @@
             'react-bootstrap' : libs + 'react-bootstrap/react-bootstrap',
             'reflux' : libs + 'reflux/dist/reflux',
             'react-router': libs + 'react-router/dist/react-router',
-
+            'promise': libs + 'q/q',
+            'lodash': libs + 'lodash/dist/lodash',
+            'superagent': libs + 'superagent/superagent',
             'bacon' : libs + 'bacon/dist/Bacon',
             'jquery' : libs + 'jquery/jquery'
         },

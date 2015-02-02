@@ -1,16 +1,17 @@
 define(function(require) {    
 	var React = require('react');
+	var { State } = require('react-router');
 	var { Row, Col, Grid, Input, TabbedArea, TabPane, Table, Button, ButtonGroup } = require('react-bootstrap');
 	
 	var actions = require('jsx!actions');
+	var Reflux = require('reflux');
+	var stores = require('stores');
 
     return  React.createClass({
+    	mixins: [ State, Reflux.connect(stores.tasks, "tasks") ],
+
     	getInitialState: function() {
     		return {
-    			tasks : [
-    				{ id : 1, title : 'fix component tile', category : 'bug', status : 'new', updated : '01/28/2015 02:16 pm', assignee : 'Andrey'},
-    				{ id : 2, title : 'add new button', category : 'feature', status : 'resolve', updated : '01/28/2015 02:16 pm', assignee : 'Andrey'}
-    			],
     			accountType : 'developer' ,
     			//developer manager
     			statuses : ['new', 'resolve', 'feadback', 'reopen', 'completed']
@@ -64,6 +65,12 @@ define(function(require) {
     	removeTask : function(t, e){
     		e.preventDefault()
     		actions.removeTask(t)
+    	},
+    	componentDidMount: function() {
+    		actions.showTasks(this.getParams());
+    	},
+    	componentWillReceiveProps: function(nextProps) {
+    		actions.showTasks(this.getParams());
     	},
     	mangerView : function(){
 			var rows = this.state.tasks.map((t, index) => {
