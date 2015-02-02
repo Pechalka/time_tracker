@@ -34,6 +34,10 @@ define(function (require) {
             },
             onApplicationStart : function(){
                 this.set(localStorage.projectName || "")
+            },
+            onLogout : function(){
+                delete localStorage.projectName;
+                this.set("")
             }
         });
     //}
