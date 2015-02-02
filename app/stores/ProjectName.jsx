@@ -24,12 +24,16 @@ define(function (require) {
             onSelectProject : function(p){
                 window.location.hash = '/projects/' + p.name;
                 this.set(p.name)
+                localStorage.projectName = p.name;
             },
             onRemoveProject : function(){
                 this.set("");
             },
             onCreateTask : function(){
                 window.location.hash = '/projects/' + _value;
+            },
+            onApplicationStart : function(){
+                this.set(localStorage.projectName || "")
             }
         });
     //}

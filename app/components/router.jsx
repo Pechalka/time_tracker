@@ -54,10 +54,14 @@ define(function(require) {
 			  </Route>
 			);
 
+    var actions = require('jsx!actions');
+
     return {
     	run : function(){
+    		actions.applicationStart();
+
 			Router.run(routes, function (Handler) {
-			  React.render(<Handler/>, document.getElementById('app'));
+				React.render(<Handler/>, document.getElementById('app'));
 			});
     	}
     }

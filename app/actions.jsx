@@ -18,7 +18,9 @@ define(function(require) {
         'showProjects',
         'selectProject',
 
-        'addComment'
+        'addComment',
+
+        'applicationStart'
     ])  
 
      var { auth } = require('jsx!auth');
@@ -38,6 +40,9 @@ define(function(require) {
         })
     })
     
+    // actions.applicationStart.listen(function(){
+    //     alert('start');
+    // })
 
     return actions;
 });
