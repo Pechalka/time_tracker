@@ -12,7 +12,7 @@ define(function(require) {
 		return Object.prototype.toString.call( obj ) === '[object Array]';
 	}
 
-	var { Authentication } = require('jsx!auth');
+	var { Authentication } = require('jsx!utils/auth');
 
 	
 	var NavMenu = React.createClass({

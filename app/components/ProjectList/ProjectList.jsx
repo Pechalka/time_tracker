@@ -37,8 +37,7 @@ define(function(require) {
             actions.selectProject(p);
         },
 		render: function() {
-            //debugger
-			var projects = this.state.projects.map((p, index) => {
+        	var projects = this.state.projects.map((p, index) => {
 					var css = "list-group-item  clearfix"
 					if (p.name == this.state.projectName){
 						css += " active";
@@ -49,6 +48,9 @@ define(function(require) {
     <Button onClick={this.removeProject.bind(this, p)} className="pull-right" bsSize="xsmall">remove</Button>
   </a>	
 				})
+
+
+            
 			return <Panel header="Projects">
 				<ul className="list-group">
 				   {projects}

@@ -50,7 +50,7 @@
     define(function (require) {
     	var React = require('react');
         
-        var router = require('jsx!components/router')
+        var router = require('jsx!router')
 
         router.run();
 

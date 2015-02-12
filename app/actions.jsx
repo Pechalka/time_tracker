@@ -23,7 +23,7 @@ define(function(require) {
         'applicationStart'
     ])  
 
-     var { auth } = require('jsx!auth');
+     var { auth } = require('jsx!utils/auth');
 
     actions.registrUser.listen(function(data){
         actions.login(data)

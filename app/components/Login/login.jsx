@@ -3,7 +3,7 @@ define(function(require) {
 
 
     var { Row, Col, Grid, Input, TabbedArea, TabPane } = require('react-bootstrap');
-    var { LinkedStateRadioGroupMixin } = require('mixins');
+    var { LinkedStateRadioGroupMixin } = require('utils/mixins');
 
     require('css!./login');
 
